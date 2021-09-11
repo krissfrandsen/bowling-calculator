@@ -22,9 +22,14 @@ export default class AddPlayer extends Vue {
 
 <style scoped lang="scss">
 .add-player-wrapper {
-    margin-top: 70px;
-    height: 6.25rem;
     width: 75rem;
+    padding-bottom: 2rem;
+}
+
+h1 {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 5rem;
+  padding-bottom: 2rem;
 }
 
 </style>

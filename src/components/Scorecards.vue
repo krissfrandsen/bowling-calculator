@@ -22,7 +22,7 @@ export default class ScorecardList extends Vue {
 <style scoped lang="scss">
 .add-player-wrapper {
     height: 12.5rem;
-    background-color: lightsalmon;
+   
 }
 
 </style>
