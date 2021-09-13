@@ -1,5 +1,7 @@
 <template>
-  <button type="button" class="base-button">{{ text }}</button>
+  <button type="button" class="base-button" :style="{ background, color }">
+    {{ text }}
+  </button>
 </template>
 
 <script lang="ts">
@@ -8,6 +10,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class BaseButton extends Vue {
   @Prop() private text!: string;
+  @Prop() private background!: string;
+  @Prop() private color!: string;
 }
 </script>
 
@@ -22,5 +26,8 @@ export default class BaseButton extends Vue {
   border: none;
   cursor: pointer;
   margin-right: 1rem;
+  &:hover {
+    filter: brightness(125%);
+  }
 }
 </style>

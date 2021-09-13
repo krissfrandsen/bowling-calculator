@@ -1,15 +1,6 @@
 <template>
   <div class="add-player-wrapper">
-    <ScorecardItem />
-    <ScorecardItem />
-    <ScorecardItem />
-    <ScorecardItem />
-    <ScorecardItem />
-    <ScorecardItem />
-    <ScorecardItem />
-    <ScorecardItem />
-    <ScorecardItem />
-    <ScorecardItem />
+    <ScorecardItem v-for="n in 9" :key="n" />
     <FinalScorecardItem />
   </div>
 </template>

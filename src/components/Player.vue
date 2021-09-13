@@ -1,8 +1,8 @@
 <template>
   <div class="player">
     <h2>{{ name }}</h2>
-    <BaseButton text="Edit Name" />
-    <BaseButton text="Delete" />
+    <BaseButton background="#E2C2FF" text="Edit Name" />
+    <BaseButton background="#E2B1B1" text="Delete" />
   </div>
 </template>
 
