@@ -21,19 +21,19 @@ export default class ScorecardItem extends Vue {
 .scorecard {
   display: flex;
   flex-wrap: wrap;
-  width: 8rem;
-  height: 8rem;
+  width: 6rem;
+  height: 6rem;
   border: 1px solid #8b8b8b;
+  background: #defff2;
+  margin: 3px;
   .container {
     display: flex;
-    flex-wrap: wrap;
-    width: 8rem;
-    height: 8rem;
-    border: 1px solid #8b8b8b;
+    flex-direction: row;
+    width: 6rem;
   }
   .first-score {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
   }
   .second-score {
     @extend .first-score;
@@ -42,8 +42,8 @@ export default class ScorecardItem extends Vue {
   }
   .result {
     align-self: flex-end;
-    width: 8rem;
-    height: 4rem;
+    width: 6rem;
+    height: 3rem;
   }
 }
 </style>

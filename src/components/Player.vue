@@ -1,6 +1,6 @@
 <template>
   <div class="player">
-    <h3>{{ name }}</h3>
+    <h2>{{ name }}</h2>
     <BaseButton text="Edit Name" />
     <BaseButton text="Delete" />
   </div>
@@ -22,10 +22,10 @@ export default class Player extends Vue {
 
 <style scoped lang="scss">
 .player {
-  height: 9.375rem;
-  // background-color: lightseagreen;
+  margin-bottom: 2rem;
 }
-h3 {
-  color: #ff2a6d;
+h2 {
+  color: #defff2;
+  padding-bottom: 1rem;
 }
 </style>
