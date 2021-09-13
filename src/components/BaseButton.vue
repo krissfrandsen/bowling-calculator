@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="base-button">{{text}}</button>
+  <button type="button" class="base-button">{{ text }}</button>
 </template>
 
 <script lang="ts">
@@ -13,14 +13,14 @@ export default class BaseButton extends Vue {
 
 <style scoped lang="scss">
 .base-button {
-background-color:  lightpink;
-text-align: center;
-color:  #fff;
-font-size: 1rem;
-padding: 1rem 1rem;
-border-radius: 4px;
-border: none;
-cursor: pointer;
-margin-right: 1rem;
+  background-color: #d68fd6;
+  text-align: center;
+  color: #464f51;
+  font-size: 1rem;
+  padding: 1rem 1.7rem;
+  // border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
 }
 </style>

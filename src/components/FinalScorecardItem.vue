@@ -22,32 +22,34 @@ export default class FinalScorecardItem extends Vue {
 .final-score-card {
   display: flex;
   flex-wrap: wrap;
-  width: 8rem;
-  height: 8rem;
+  width: 9rem;
+  height: 6rem;
   border: 1px solid #8b8b8b;
+  background: #defff2;
+  margin: 3px;
   .container {
     display: flex;
     flex-direction: row;
-    width: 8rem;
+    width: 9rem;
   }
   .first {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
   }
   .second {
-    @extend .first-score;
+    @extend .first;
     border: 1px solid #8b8b8b;
     border-style: none none solid solid;
   }
   .third {
-    @extend .first-score;
+    @extend .first;
     border: 1px solid #8b8b8b;
     border-style: none none solid solid;
   }
   .result {
     align-self: flex-end;
-    width: 8rem;
-    height: 4rem;
+    width: 9rem;
+    height: 3rem;
   }
 }
 </style>

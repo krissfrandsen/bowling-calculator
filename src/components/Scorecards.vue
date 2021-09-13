@@ -1,28 +1,24 @@
 <template>
   <div class="add-player-wrapper">
-      <h1>Scoreboard</h1>
-      <ScorecardItem />
+    <h1>Scoreboard</h1>
+    <ScorecardItem />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ScorecardItem from "./ScorecardItem.vue"; 
+import ScorecardItem from "./ScorecardItem.vue";
 
 @Component({
-    components: {
-        ScorecardItem
-    }
+  components: {
+    ScorecardItem,
+  },
 })
-export default class ScorecardList extends Vue {
-
-}
+export default class ScorecardList extends Vue {}
 </script>
 
 <style scoped lang="scss">
 .add-player-wrapper {
-    height: 12.5rem;
-   
+  height: 12.5rem;
 }
-
 </style>
