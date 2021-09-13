@@ -1,9 +1,11 @@
 <template>
   <div class="final-score-card">
-  <section class="first"></section>
-  <section class="second"></section>
-  <section class="third"></section>
-  <section class=""></section>
+    <div class="container">
+      <section class="first"></section>
+      <section class="second"></section>
+      <section class="third"></section>
+    </div>
+    <section class="result"></section>
   </div>
 </template>
 
@@ -12,20 +14,40 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
 export default class FinalScorecardItem extends Vue {
-   @Prop() private finalScore!: string;
+  @Prop() private finalScore!: string;
 }
 </script>
 
 <style scoped lang="scss">
-.scorecard {
-   
+.final-score-card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 8rem;
+  height: 8rem;
+  border: 1px solid #8b8b8b;
+  .container {
+    display: flex;
+    flex-direction: row;
     width: 8rem;
-    height: 8rem;
-    border: 1px solid black;
+  }
+  .first {
+    width: 4rem;
+    height: 4rem;
+  }
+  .second {
+    @extend .first-score;
+    border: 1px solid #8b8b8b;
+    border-style: none none solid solid;
+  }
+  .third {
+    @extend .first-score;
+    border: 1px solid #8b8b8b;
+    border-style: none none solid solid;
+  }
+  .result {
+    align-self: flex-end;
+    width: 8rem;
+    height: 4rem;
+  }
 }
-.first-score {
-    width: 3.5rem;
-    height: 3.5rem;
-    border: 1px solid white;
- }
 </style>
