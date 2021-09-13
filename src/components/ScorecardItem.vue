@@ -29,7 +29,7 @@ export default class ScorecardItem extends Vue {
   .container {
     display: flex;
     flex-direction: row;
-    width: 6rem;
+    width: 5.9rem;
   }
   .first-score {
     width: 3rem;
