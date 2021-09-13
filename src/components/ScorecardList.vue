@@ -1,5 +1,6 @@
 <template>
   <div class="add-player-wrapper">
+      
       <ScorecardItem />
   </div>
 </template>

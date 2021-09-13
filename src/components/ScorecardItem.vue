@@ -1,8 +1,10 @@
 <template>
   <div class="scorecard">
-    <section class="first-score"></section>
-    <section class="second-score"></section>
-    <section class="result"></section>
+    <div class="container">
+      <div class="first-score"></div>
+      <div class="second-score"></div>
+    </div>
+    <div class="result"></div>
   </div>
 </template>
 
@@ -24,21 +26,24 @@ export default class ScorecardItem extends Vue {
   border: 1px solid #8b8b8b;
   .container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     width: 8rem;
     height: 8rem;
-    border: 1px solid #ff2a6d;
+    border: 1px solid #8b8b8b;
   }
   .first-score {
     width: 4rem;
     height: 4rem;
-    border: 1px solid #ff2a6d;
   }
   .second-score {
     @extend .first-score;
+    border: 1px solid #8b8b8b;
+    border-style: none none solid solid;
   }
   .result {
-    border: 1px solid white;
+    align-self: flex-end;
+    width: 8rem;
+    height: 4rem;
   }
 }
 </style>
