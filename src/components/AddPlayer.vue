@@ -1,7 +1,7 @@
 <template>
   <div class="add-player-wrapper">
     <h1>Bowling Score Calculator</h1>
-    <BaseButton text="Add Player" />
+    <BaseButton background="#549F93" text="Add Player" />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default class AddPlayer extends Vue {
 <style scoped lang="scss">
 .add-player-wrapper {
   width: 75rem;
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-bottom: 2rem;
 }
 

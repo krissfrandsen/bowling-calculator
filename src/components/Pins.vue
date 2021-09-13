@@ -1,17 +1,7 @@
 <template>
   <div class="pin-wrapper">
-    <BaseButton text="0" />
-    <BaseButton text="1" />
-    <BaseButton text="2" />
-    <BaseButton text="3" />
-    <BaseButton text="4" />
-    <BaseButton text="5" />
-    <BaseButton text="6" />
-    <BaseButton text="7" />
-    <BaseButton text="8" />
-    <BaseButton text="9" />
-    <BaseButton text="10" />
-    <BaseButton text="Reset" />
+    <BaseButton v-for="(n, i) in 11" :key="n" :text="i" />
+    <BaseButton background="#258EA6" text="Reset" />
   </div>
 </template>
 
@@ -33,7 +23,6 @@ export default class Pins extends Vue {
 .pin-wrapper {
   height: 4rem;
   padding-bottom: 2rem;
-  // background-color: lightsteelblue;
 }
 
 button {
