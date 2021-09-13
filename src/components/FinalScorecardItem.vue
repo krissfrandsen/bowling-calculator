@@ -30,7 +30,7 @@ export default class FinalScorecardItem extends Vue {
   .container {
     display: flex;
     flex-direction: row;
-    width: 9rem;
+    width: 8.9rem;
   }
   .first {
     width: 3rem;
@@ -44,7 +44,8 @@ export default class FinalScorecardItem extends Vue {
   .third {
     @extend .first;
     border: 1px solid #8b8b8b;
-    border-style: none none solid solid;
+    border-style: none none solid solid; // I think we could rewrite this since we're repeating ourselfs
+    padding-right: 1rem;
   }
   .result {
     align-self: flex-end;
