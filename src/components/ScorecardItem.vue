@@ -1,8 +1,8 @@
 <template>
   <div class="scorecard">
     <div class="container">
-      <div class="first-score"></div>
-      <div class="second-score"></div>
+      <div class="first-score">{{ usedPins[0] }}</div>
+      <div class="second-score">{{ usedPins[1] }}</div>
     </div>
     <div class="result"></div>
   </div>
