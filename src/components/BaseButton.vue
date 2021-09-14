@@ -1,7 +1,10 @@
 <template>
-
-  <button type="button" class="base-button" @click="handleClick" :style="{ background, color }">
-
+  <button
+    type="button"
+    class="base-button"
+    @click="handleClick"
+    :style="{ background, color }"
+  >
     {{ text }}
   </button>
 </template>
@@ -18,9 +21,6 @@ export default class BaseButton extends Vue {
   handleClick() {
     this.$emit("click");
   }
-
-
-
 }
 </script>
 

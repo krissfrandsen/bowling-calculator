@@ -1,6 +1,5 @@
 <template>
   <div class="pin-wrapper">
-
     <BaseButton
       v-for="item in pins"
       :key="item"
@@ -8,9 +7,7 @@
       @click="btnClick(item)"
     />
     <!-- @click hanterar emitten som emittas uppe från basebutton componenten -->
-    <BaseButton text="Reset"  background="#258EA6"/>
-    {{ usedPins }}
-
+    <BaseButton text="Reset" background="#258EA6" @click="resetScorecard" />
   </div>
 </template>
 
@@ -29,6 +26,9 @@ export default class Pins extends Vue {
 
   btnClick(number: any) {
     this.$emit("number", number); //skickar vidare data ner i heirarkin
+  }
+  resetScorecard() {
+    this.usedPins = [];
   }
 }
 </script>

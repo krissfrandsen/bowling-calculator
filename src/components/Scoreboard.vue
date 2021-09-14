@@ -1,7 +1,7 @@
 <template>
   <div class="player-wrapper">
     <Player name="Player 1" />
-    <ScorecardList :usedPins="usedPins" />
+    <ScorecardList :usedPins="usedPins" :game="game" />
     <Pins
       :pins="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
       @number="handleNumber"
@@ -24,10 +24,30 @@ import Pins from "./Pins.vue";
   },
 })
 export default class Scoreboard extends Vue {
+  frame: any[] = [];
+
   usedPins: number[] = [];
+  game: any[] = [
+    {
+      index: 0,
+      shots: [],
+    },
+    {
+      index: 1,
+      shots: [],
+    },
+    {
+      index: 2,
+      shots: [],
+    },
+  ];
 
   handleNumber(number: number) {
-    this.usedPins.push(number);
+    // Todo:
+    // Current shots
+    // Check length of shots
+    // Function for returning index - getCurrentRound()
+    return this.game[0].shots.push(number);
   }
 }
 </script>
