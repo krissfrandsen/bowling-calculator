@@ -1,5 +1,7 @@
 <template>
-  <button type="button" class="base-button">{{ text }}</button>
+  <button type="button" class="base-button" @click="handleClick">
+    {{ text }}
+  </button>
 </template>
 
 <script lang="ts">
@@ -8,6 +10,10 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class BaseButton extends Vue {
   @Prop() private text!: string;
+
+  handleClick() {
+    this.$emit("click");
+  }
 }
 </script>
 
