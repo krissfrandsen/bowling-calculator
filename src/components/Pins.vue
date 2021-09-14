@@ -1,5 +1,6 @@
 <template>
   <div class="pin-wrapper">
+
     <BaseButton
       v-for="item in pins"
       :key="item"
@@ -7,8 +8,9 @@
       @click="btnClick(item)"
     />
     <!-- @click hanterar emitten som emittas uppe från basebutton componenten -->
-    <BaseButton text="Reset" />
+    <BaseButton text="Reset"  background="#258EA6"/>
     {{ usedPins }}
+
   </div>
 </template>
 
@@ -35,7 +37,6 @@ export default class Pins extends Vue {
 .pin-wrapper {
   height: 4rem;
   padding-bottom: 2rem;
-  // background-color: lightsteelblue;
 }
 
 button {
