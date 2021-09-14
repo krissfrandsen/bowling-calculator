@@ -1,7 +1,7 @@
 <template>
   <div class="player-wrapper">
     <Player name="Player 1" />
-    <ScorecardList />
+    <ScorecardList :usedPins="usedPins" />
     <Pins
       :pins="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
       @number="handleNumber"
