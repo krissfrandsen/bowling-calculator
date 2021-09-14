@@ -1,12 +1,21 @@
 <template>
   <div class="pin-wrapper">
-    <BaseButton v-for="(n, i) in 11" :key="n" :text="i" />
-    <BaseButton background="#258EA6" text="Reset" />
+
+    <BaseButton
+      v-for="item in pins"
+      :key="item"
+      :text="item"
+      @click="btnClick(item)"
+    />
+    <!-- @click hanterar emitten som emittas uppe från basebutton componenten -->
+    <BaseButton text="Reset"  background="#258EA6"/>
+    {{ usedPins }}
+
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import BaseButton from "./BaseButton.vue";
 
 @Component({
@@ -15,7 +24,12 @@ import BaseButton from "./BaseButton.vue";
   },
 })
 export default class Pins extends Vue {
-  //   @Prop() private msg!: string;
+  @Prop() private pins!: number[]; //tar emot data som skickas upp
+  @Prop() private usedPins!: number[]; //tar emot data som skickas upp
+
+  btnClick(number: any) {
+    this.$emit("number", number); //skickar vidare data ner i heirarkin
+  }
 }
 </script>
 
