@@ -4,6 +4,7 @@
       v-for="(item, index) in game"
       :key="index"
       :shots="item.shots"
+      :result="item.result"
     />
     <FinalScorecardItem />
   </div>
