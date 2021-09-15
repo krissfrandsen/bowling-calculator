@@ -6,7 +6,7 @@
       </div>
       <div class="second-score">{{ secondScore }}</div>
     </div>
-    <div class="result"></div>
+    <div class="result">{{ resultScore }}</div>
   </div>
 </template>
 
@@ -16,12 +16,24 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 @Component
 export default class ScorecardItem extends Vue {
   @Prop() private shots!: number[]; //item.shots
+  @Prop() private result!: number;
 
   get firstScore(): string {
-    return this.shots[0]?.toString() || "-";
+    if (this.shots[0] === 10) {
+      return "X";
+    } else {
+      return this.shots[0]?.toString() || "-";
+    }
   }
   get secondScore(): string {
-    return this.shots[1]?.toString() || "-";
+    if (this.shots[1] === 10) {
+      return "X";
+    } else {
+      return this.shots[1]?.toString() || "-";
+    }
+  }
+  get resultScore(): number {
+    return this.result;
   }
 }
 </script>
