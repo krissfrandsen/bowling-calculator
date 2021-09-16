@@ -6,7 +6,9 @@
       </div>
       <div class="second-score">{{ secondScore }}</div>
     </div>
-    <div class="result">{{ resultScore }}</div>
+    <div class="result" v-if="resultScore > 0 && resultScore < 10">
+      {{ resultScore }}
+    </div>
   </div>
 </template>
 
@@ -22,14 +24,14 @@ export default class ScorecardItem extends Vue {
     if (this.shots[0] === 10) {
       return "X";
     } else {
-      return this.shots[0]?.toString() || "-";
+      return this.shots[0]?.toString() || "";
     }
   }
   get secondScore(): string {
     if (this.shots[1] === 10) {
       return "X";
     } else {
-      return this.shots[1]?.toString() || "-";
+      return this.shots[1]?.toString() || "";
     }
   }
   get resultScore(): number {

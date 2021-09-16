@@ -22,13 +22,15 @@ import BaseButton from "./BaseButton.vue";
 })
 export default class Pins extends Vue {
   @Prop() private pins!: number[]; //tar emot data som skickas upp
-  @Prop() private usedPins!: number[]; //tar emot data som skickas upp
+  @Prop() private gameList!: any[]; //tar emot data som skickas upp
+
+  resetGameList = this.gameList;
 
   btnClick(number: any) {
     this.$emit("number", number); //skickar vidare data ner i heirarkin
   }
   resetScorecard() {
-    this.usedPins = [];
+    this.resetGameList = [];
   }
 }
 </script>
