@@ -2,12 +2,14 @@
   <div class="scorecard">
     <div class="container">
       <div class="first-score">
-        {{ firstScore }}
+        <span>{{ firstRoll }}</span>
       </div>
-      <div class="second-score">{{ secondScore }}</div>
+      <div class="second-score">
+        <span>{{ secondRoll }}</span>
+      </div>
     </div>
     <div class="result" v-if="resultScore > 0 && resultScore < 10">
-      {{ resultScore }}
+      <span>{{ resultScore }}</span>
     </div>
   </div>
 </template>
@@ -20,22 +22,31 @@ export default class ScorecardItem extends Vue {
   @Prop() private rolls!: number[];
   @Prop() private result!: number;
 
-  get firstScore(): string {
-    if (this.rolls[0] === 10) {
+  maxPins = 10;
+
+  get firstRoll(): string {
+    if (this.rolls[0] === this.maxPins) {
       return "X";
     } else {
       return this.rolls[0]?.toString() || "";
     }
   }
-  get secondScore(): string {
-    if (this.rolls[1] === 10) {
+
+  get secondRoll(): string {
+    if (this.rolls[1] === this.maxPins) {
       return "X";
+    } else if (this.maxPins - this.rolls[0] === this.rolls[1]) {
+      return "/";
     } else {
       return this.rolls[1]?.toString() || "";
     }
   }
-  get resultScore(): number {
-    return this.result;
+
+  get resultScore(): string {
+    if (this.result === this.maxPins) {
+      return "";
+    }
+    return this.result.toString();
   }
 }
 </script>
@@ -68,6 +79,10 @@ export default class ScorecardItem extends Vue {
     align-self: flex-end;
     width: 6rem;
     height: 3rem;
+  }
+  span {
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
