@@ -26,12 +26,12 @@ export default class BaseButton extends Vue {
 
 <style scoped lang="scss">
 .base-button {
-  background-color: #d68fd6;
+  //background-color: #84a59d;
   text-align: center;
-  color: #464f51;
+  // color: #464f51;
   font-size: 1rem;
-  padding: 1rem 1.7rem;
-  // border-radius: 4px;
+  padding: 1rem 1.4rem;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
   margin-right: 1rem;

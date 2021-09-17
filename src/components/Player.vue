@@ -1,8 +1,9 @@
 <template>
   <div class="player">
     <h2>{{ name }}</h2>
-    <BaseButton background="#E2C2FF" text="Edit Name" />
-    <BaseButton background="#E2B1B1" text="Delete" />
+
+    <BaseButton background="#8F8BA7" color="#ffe5dc" text="Edit Name" />
+    <BaseButton background="#E0909C" color="#ffe5dc" text="Delete" />
   </div>
 </template>
 
@@ -25,7 +26,7 @@ export default class Player extends Vue {
   margin-bottom: 2rem;
 }
 h2 {
-  color: #defff2;
+  color: #7c7484;
   padding-bottom: 1rem;
 }
 </style>

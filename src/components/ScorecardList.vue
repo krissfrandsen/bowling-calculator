@@ -1,9 +1,9 @@
 <template>
   <div class="add-player-wrapper">
     <ScorecardItem
-      v-for="(item, index) in gameList"
+      v-for="(item, index) in framesList"
       :key="index"
-      :shots="item.shots"
+      :rolls="item.rolls"
       :result="item.score"
     />
     <FinalScorecardItem />
@@ -22,7 +22,7 @@ import FinalScorecardItem from "./FinalScorecardItem.vue";
   },
 })
 export default class ScorecardList extends Vue {
-  @Prop() private gameList!: any[];
+  @Prop() private framesList!: any[];
 }
 </script>
 

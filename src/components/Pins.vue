@@ -5,9 +5,16 @@
       :key="item"
       :text="item"
       @click="btnClick(item)"
+      background="#7c7484"
+      color="#ffe5dc"
     />
     <!-- @click hanterar emitten som emittas uppe från basebutton componenten -->
-    <BaseButton text="Reset" background="#258EA6" @click="resetScorecard" />
+    <BaseButton
+      text="Reset"
+      background="#8F8BA7"
+      color="#ffe5dc"
+      @click="resetScorecard"
+    />
   </div>
 </template>
 
@@ -24,13 +31,11 @@ export default class Pins extends Vue {
   @Prop() private pins!: number[]; //tar emot data som skickas upp
   @Prop() private gameList!: any[]; //tar emot data som skickas upp
 
-  resetGameList = this.gameList;
-
   btnClick(number: any) {
     this.$emit("number", number); //skickar vidare data ner i heirarkin
   }
   resetScorecard() {
-    this.resetGameList = [];
+    this.$emit("reset-scorecard");
   }
 }
 </script>
@@ -39,9 +44,5 @@ export default class Pins extends Vue {
 .pin-wrapper {
   height: 4rem;
   padding-bottom: 2rem;
-}
-
-button {
-  background-color: #ca3cff;
 }
 </style>
