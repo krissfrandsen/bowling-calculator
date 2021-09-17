@@ -36,12 +36,8 @@ body {
   align-items: center;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url("./assets/bg4.jpg");
+  background-image: url("./assets/bg2.jpeg");
   background-size: cover;
-}
-
-h1 {
-  color: #d1f7ff;
 }
 
 .hero {
@@ -50,5 +46,6 @@ h1 {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(2rem);
   margin: auto;
+  border-radius: 10px;
 }
 </style>

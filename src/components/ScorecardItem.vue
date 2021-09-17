@@ -17,21 +17,21 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
 export default class ScorecardItem extends Vue {
-  @Prop() private shots!: number[]; //item.shots
+  @Prop() private rolls!: number[];
   @Prop() private result!: number;
 
   get firstScore(): string {
-    if (this.shots[0] === 10) {
+    if (this.rolls[0] === 10) {
       return "X";
     } else {
-      return this.shots[0]?.toString() || "";
+      return this.rolls[0]?.toString() || "";
     }
   }
   get secondScore(): string {
-    if (this.shots[1] === 10) {
+    if (this.rolls[1] === 10) {
       return "X";
     } else {
-      return this.shots[1]?.toString() || "";
+      return this.rolls[1]?.toString() || "";
     }
   }
   get resultScore(): number {
@@ -46,9 +46,10 @@ export default class ScorecardItem extends Vue {
   flex-wrap: wrap;
   width: 6rem;
   height: 6rem;
-  border: 1px solid #8b8b8b;
-  background: #defff2;
+  border: 1px solid #b1a8b9;
+  background: #ffe5dc;
   margin: 3px;
+  border-radius: 3px;
   .container {
     display: flex;
     flex-direction: row;
@@ -60,7 +61,7 @@ export default class ScorecardItem extends Vue {
   }
   .second-score {
     @extend .first-score;
-    border: 1px solid #8b8b8b;
+    border: 1px solid #b1a8b9;
     border-style: none none solid solid;
   }
   .result {

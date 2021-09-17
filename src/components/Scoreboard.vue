@@ -1,11 +1,12 @@
 <template>
   <div class="player-wrapper">
     <Player name="Player 1" />
-    <ScorecardList :gameList="game" />
+    <ScorecardList :framesList="frames" />
     <Pins
       :pins="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
       @number="handleNumber"
-      :gameList="game"
+      :framesList="frames"
+      @reset-scorecard="resetScorecard"
     />
   </div>
 </template>
@@ -26,54 +27,96 @@ import Pins from "./Pins.vue";
 export default class Scoreboard extends Vue {
   currentRound = 0;
 
-  game: any[] = [
+  frames: any[] = [
     {
       score: 0,
-      shots: [],
+      rolls: [],
     },
     {
       score: 0,
-      shots: [],
+      rolls: [],
     },
     {
       score: 0,
-      shots: [],
+      rolls: [],
     },
     {
       score: 0,
-      shots: [],
+      rolls: [],
     },
     {
       score: 0,
-      shots: [],
+      rolls: [],
     },
     {
       score: 0,
-      shots: [],
+      rolls: [],
     },
     {
       score: 0,
-      shots: [],
+      rolls: [],
     },
     {
       score: 0,
-      shots: [],
+      rolls: [],
     },
     {
       score: 0,
-      shots: [],
+      rolls: [],
     },
   ];
 
-  lastRound = this.game[this.game.length - 1];
+  resetScorecard() {
+    this.frames = [
+      {
+        score: 0,
+        rolls: [],
+      },
+      {
+        score: 0,
+        rolls: [],
+      },
+      {
+        score: 0,
+        rolls: [],
+      },
+      {
+        score: 0,
+        rolls: [],
+      },
+      {
+        score: 0,
+        rolls: [],
+      },
+      {
+        score: 0,
+        rolls: [],
+      },
+      {
+        score: 0,
+        rolls: [],
+      },
+      {
+        score: 0,
+        rolls: [],
+      },
+      {
+        score: 0,
+        rolls: [],
+      },
+    ];
+  }
+
+  lastRound = this.frames[this.frames.length - 1];
+  // numberOfRolls = this.frames[this.currentRound].rolls.length;
 
   handleNumber(number: number) {
-    this.game[this.currentRound].shots.push(number);
+    this.frames[this.currentRound].rolls.push(number);
+
     if (number === 10) {
       this.calculateScore();
       this.currentRound++;
-      console.log(this.game[this.currentRound - 1].score);
-    } else if (this.game[this.currentRound].shots.length === 2) {
+    } else if (this.frames[this.currentRound].rolls.length === 2) {
       this.calculateScore();
       this.currentRound++;
     } else if (this.currentRound === this.lastRound.index) {
@@ -82,11 +125,20 @@ export default class Scoreboard extends Vue {
   }
 
   calculateScore() {
-    const firstScore = this.game[this.currentRound].shots[0];
-    const secondScore = this.game[this.currentRound].shots[1] ?? 0;
+    const firstScore = this.frames[this.currentRound].rolls[0];
+    const secondScore = this.frames[this.currentRound].rolls[1] ?? 0;
 
-    const sum = firstScore + secondScore;
-    this.game[this.currentRound].score = sum;
+    // const previousScore = this.frames[this.currentRound].score
+    //   ? this.frames[this.currentRound - 1].score
+    //   : 0;
+
+    this.frames[this.currentRound].score = firstScore + secondScore;
+    console.log("score", this.frames[this.currentRound].score);
+    if (this.currentRound !== 0) {
+      const previousScore = this.frames[this.currentRound - 1].score ?? 0;
+      this.frames[this.currentRound].score += previousScore;
+      console.log(" previous score", previousScore);
+    }
   }
 }
 </script>
