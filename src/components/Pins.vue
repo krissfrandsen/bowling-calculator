@@ -9,12 +9,7 @@
       color="#ffe5dc"
     />
     <!-- @click hanterar emitten som emittas uppe från basebutton componenten -->
-    <BaseButton
-      text="Reset"
-      background="#8F8BA7"
-      color="#ffe5dc"
-      @click="resetScorecard"
-    />
+    <BaseButton text="Reset" background="#8F8BA7" color="#ffe5dc" />
   </div>
 </template>
 
@@ -28,11 +23,16 @@ import BaseButton from "./BaseButton.vue";
   },
 })
 export default class Pins extends Vue {
-  @Prop() private pins!: number[]; //tar emot data som skickas upp
-  @Prop() private gameList!: any[]; //tar emot data som skickas upp
+  @Prop() private pins!: number[];
+  @Prop() private gameList!: any[];
+  @Prop() isDisabled!: () => void;
 
   btnClick(number: any) {
-    this.$emit("number", number); //skickar vidare data ner i heirarkin
+    this.$emit("number", number);
+  }
+
+  disableHandler(number: number) {
+    this.$emit("isDisabled", number);
   }
   resetScorecard() {
     this.$emit("reset-scorecard");
