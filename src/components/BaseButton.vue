@@ -17,6 +17,7 @@ export default class BaseButton extends Vue {
   @Prop() private text!: string;
   @Prop() private background!: string;
   @Prop() private color!: string;
+  @Prop() isDisabled!: () => void;
 
   handleClick() {
     this.$emit("click");
@@ -37,6 +38,9 @@ export default class BaseButton extends Vue {
   margin-right: 1rem;
   &:hover {
     filter: brightness(125%);
+  }
+  &:disabled {
+    background-color: lightgray;
   }
 }
 </style>

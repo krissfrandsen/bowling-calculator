@@ -8,8 +8,8 @@
         <span>{{ secondRoll }}</span>
       </div>
     </div>
-    <div class="result" v-if="resultScore > 0 && resultScore < 10">
-      <span>{{ resultScore }}</span>
+    <div class="result" v-if="resultScore > 0">
+      {{ resultScore }}
     </div>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default class ScorecardItem extends Vue {
 
   get secondRoll(): string {
     if (this.rolls[1] === this.maxPins) {
-      return "X";
+      return "/";
     } else if (this.maxPins - this.rolls[0] === this.rolls[1]) {
       return "/";
     } else {
