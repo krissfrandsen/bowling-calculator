@@ -81,14 +81,7 @@ export default class Scoreboard extends Vue {
     this.frames[this.currentRound].rolls.push(number);
 
     this.checkStrike(number);
-
-    //not working
-    if (this.frames[this.currentRound - 1]) {
-      if (this.frames[this.currentRound - 1].isSpare) {
-        const spareNumber = this.frames[this.currentRound].rolls[0];
-        this.frames[this.currentRound - 1].score += spareNumber;
-      }
-    }
+    this.checkSpare(number);
 
     if (number === 10) {
       this.frames[this.currentRound].isStrike = true;
@@ -125,7 +118,27 @@ export default class Scoreboard extends Vue {
   checkStrike(number: number) {
     if (this.frames[this.currentRound - 1]) {
       if (this.frames[this.currentRound - 1].isStrike) {
+        this.checkDoubleStrike(number);
         this.frames[this.currentRound - 1].score += number;
+      }
+    }
+  }
+
+  checkSpare(number: number) {
+    if (this.frames[this.currentRound - 1]) {
+      if (this.frames[this.currentRound - 1].isSpare) {
+        if (!this.frames[this.currentRound].rolls[1]) {
+          const spareNumber = this.frames[this.currentRound].rolls[0];
+          this.frames[this.currentRound - 1].score += spareNumber;
+        }
+      }
+    }
+  }
+
+  checkDoubleStrike(number: number) {
+    if (this.frames[this.currentRound - 2]) {
+      if (this.frames[this.currentRound - 2].isStrike) {
+        this.frames[this.currentRound - 2].score += number;
       }
     }
   }
