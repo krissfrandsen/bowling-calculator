@@ -1,7 +1,13 @@
 <template>
   <div>
-    <input type="text" v-model="newName" />
-    <button @click="changeName(newName)">OK!</button>
+    <div>
+      <input type="text" v-model="newName" placeholder="change name" />
+      <button @click="changeName(newName)">OK!</button>
+    </div>
+    <div>
+      <input type="text" placeholder="add name" v-model="newName" />
+      <button @click="addName(newName)">OK!</button>
+    </div>
   </div>
 </template>
 
@@ -12,9 +18,13 @@ export default class ChangeNameModal extends Vue {
   newName = "";
 
   changeName(name: string) {
-    console.log("from changenameModal", name);
+    this.$emit("edit", name);
+    this.newName = "";
+  }
 
-    this.$emit("editName", name);
+  addName(name: string) {
+    this.$emit("add", name);
+    this.newName = "";
   }
 }
 </script>

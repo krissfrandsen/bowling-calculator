@@ -1,7 +1,9 @@
 <template>
   <div class="player">
-    <h2>{{ name }}</h2>
-    <p>{{ getName }}</p>
+    <h2>{{ getName }}</h2>
+    <div v-for="(name, index) in this.$store.state.nameList" :key="index">
+      <p>{{ name }}</p>
+    </div>
 
     <BaseButton
       background="#8F8BA7"
@@ -11,7 +13,7 @@
     />
     <BaseButton background="#E0909C" color="#ffe5dc" text="Delete" />
 
-    <ChangeNameModal v-show="changeNameModal" @changeName="editName(newName)" />
+    <ChangeNameModal v-show="changeNameModal" @edit="editName" @add="addName" />
   </div>
 </template>
 
@@ -31,14 +33,15 @@ import ChangeNameModal from "./ChangeNameModal.vue";
   },
 })
 export default class Player extends Vue {
-  @Prop() private name!: string;
-
   changeNameModal = false;
 
   editName(newName: string) {
-    console.log("name parameter from player component", newName);
-    console.log("store name from player", this.$store.state.player.name);
     this.$store.dispatch("changeName", newName);
+  }
+
+  addName(name: string) {
+    console.log(this.$store.state.nameList);
+    this.$store.dispatch("addName", name);
   }
 
   toggleModal() {

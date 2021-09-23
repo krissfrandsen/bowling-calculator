@@ -19,34 +19,37 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
 export default class ScorecardItem extends Vue {
-  @Prop() private rolls!: number[];
-  @Prop() private result!: number;
+  @Prop() private rolls?: number[];
+  @Prop() private result?: number;
 
   maxPins = 10;
 
   get firstRoll(): string {
-    if (this.rolls[0] === this.maxPins) {
-      return "X";
-    } else {
-      return this.rolls[0]?.toString() || "";
-    }
+    return "";
+    //if (this.rolls[0] === this.maxPins) {
+    //  return "X";
+    //} else {
+    //  return this.rolls[0]?.toString() || "";
+    //}
   }
 
   get secondRoll(): string {
-    if (this.rolls[1] === this.maxPins) {
-      return "/";
-    } else if (this.maxPins - this.rolls[0] === this.rolls[1]) {
-      return "/";
-    } else {
-      return this.rolls[1]?.toString() || "";
-    }
+    return "";
+    // if (this.rolls[1] === this.maxPins) {
+    //   return "/";
+    // } else if (this.maxPins - this.rolls[0] === this.rolls[1]) {
+    //   return "/";
+    // } else {
+    //   return this.rolls[1]?.toString() || "";
+    // }
   }
 
   get resultScore(): string {
-    if (this.result === this.maxPins) {
-      return "";
-    }
-    return this.result.toString();
+    return "";
+    //   if (this.result === this.maxPins) {
+    //     return "";
+    //   }
+    //   return this.result.toString();
   }
 }
 </script>
