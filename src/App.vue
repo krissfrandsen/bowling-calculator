@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="hero">
+      <h1>Bowling Score Calculator</h1>
       <AddPlayer />
       <Scoreboard />
     </div>
@@ -47,5 +48,12 @@ body {
   backdrop-filter: blur(2rem);
   margin: auto;
   border-radius: 10px;
+}
+
+h1 {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 5rem;
+  padding-bottom: 2rem;
+  color: #7c7484;
 }
 </style>
