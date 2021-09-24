@@ -1,16 +1,10 @@
-// import Store from '@/store/index'
-// import { IFrame } from '@/types/frame'
+const bowlingHelper = {
+  calculateScore: function (rollsArr: number[]): number {
+    const rollOne = rollsArr[0];
+    const rollTwo = rollsArr[1] ?? 0;
 
-// const createFrames = function() {
-// for(let i = 0; i<9; i++) {
+    return rollOne + rollTwo;
+  },
+};
 
-// }
-// }
-
-// const createPlayer = function(name: string, frames: IFrame) {
-//     const player = new Player();
-//     player.name = name;
-//     player.frames = frames
-
-//     return player;
-// }
+export default bowlingHelper;
