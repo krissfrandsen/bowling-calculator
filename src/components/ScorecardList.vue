@@ -46,8 +46,10 @@ export default class ScorecardList extends Vue {
 
 <style scoped lang="scss">
 .add-player-wrapper {
+  width: 90%;
+  margin: auto;
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 </style>

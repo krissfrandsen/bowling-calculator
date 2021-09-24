@@ -4,6 +4,7 @@
     class="base-button"
     @click="handleClick"
     :style="{ background, color }"
+    :disabled="isDisabled"
   >
     {{ text }}
   </button>
@@ -32,10 +33,9 @@ export default class BaseButton extends Vue {
   // color: #464f51;
   font-size: 1rem;
   padding: 1rem 1.4rem;
-  border-radius: 4px;
-  border: none;
+  border: solid 1px #000;
   cursor: pointer;
-  margin-right: 1rem;
+
   &:hover {
     filter: brightness(125%);
   }

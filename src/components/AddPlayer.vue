@@ -1,7 +1,7 @@
 <template>
   <div class="add-player-wrapper">
     <BaseButton
-      background="#8F8BA7"
+      background="#84A59D"
       color="#ffe5dc"
       text="Add Player"
       @click="addPlayer"

@@ -9,13 +9,11 @@ Vue.use(Vuex);
 export interface IGameState {
   game: IGame;
   numberOfFrames: number;
-  nameList: string[];
 }
 
 export default new Vuex.Store<IGameState>({
   state: {
     numberOfFrames: 10,
-    nameList: [],
     game: {
       playerList: [
         {
@@ -38,9 +36,6 @@ export default new Vuex.Store<IGameState>({
     CHANGE_NAME(state, name) {
       state.game.playerList[0].name = name;
     },
-    ADD_NAME(state, name) {
-      state.nameList = name;
-    },
     SET_FRAMES(state, frames) {
       state.game.playerList[0].frames = frames;
     },
@@ -57,9 +52,6 @@ export default new Vuex.Store<IGameState>({
   actions: {
     changeName({ commit }, name) {
       return commit("CHANGE_NAME", name);
-    },
-    addName({ commit }, name) {
-      return commit("ADD_NAME", [...this.state.nameList, name]);
     },
     addFrames({ commit }, frames) {
       return commit("SET_FRAMES", [

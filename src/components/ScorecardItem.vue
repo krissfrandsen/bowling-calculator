@@ -60,10 +60,10 @@ export default class ScorecardItem extends Vue {
   flex-wrap: wrap;
   width: 6rem;
   height: 6rem;
-  border: 1px solid #b1a8b9;
-  background: #ffe5dc;
+  border: 2px solid #000;
+  background: #f6bd60;
   margin: 3px;
-  border-radius: 3px;
+  // border-radius: 3px;
   .container {
     display: flex;
     flex-direction: row;
@@ -75,7 +75,7 @@ export default class ScorecardItem extends Vue {
   }
   .second-score {
     @extend .first-score;
-    border: 1px solid #b1a8b9;
+    border: 2px solid #000;
     border-style: none none solid solid;
   }
   .result {
