@@ -55,6 +55,8 @@ export default class ScorecardItem extends Vue {
 </script>
 
 <style scoped lang="scss">
+//$scoreCardBg: #ffe5dc;
+
 .scorecard {
   display: flex;
   flex-wrap: wrap;

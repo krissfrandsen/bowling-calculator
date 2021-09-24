@@ -19,11 +19,7 @@ import BaseButton from "./BaseButton.vue";
     BaseButton,
   },
 })
-export default class AddPlayer extends Vue {
-  addPlayer(id: number) {
-    //should connect the store with an action for add new player
-  }
-}
+export default class AddPlayer extends Vue {}
 </script>
 
 <style scoped lang="scss">
