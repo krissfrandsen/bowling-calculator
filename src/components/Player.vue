@@ -4,16 +4,21 @@
     <div v-for="(name, index) in this.$store.state.nameList" :key="index">
       <p>{{ name }}</p>
     </div>
-
-    <BaseButton
-      background="#8F8BA7"
-      color="#ffe5dc"
-      text="Edit Name"
-      @click="toggleModal"
-    />
-    <BaseButton background="#E0909C" color="#ffe5dc" text="Delete" />
-
-    <ChangeNameModal v-show="changeNameModal" @edit="editName" @add="addName" />
+    <div class="button-wrapper">
+      <BaseButton
+        background="#F5CAC3"
+        color="#000"
+        text="Edit Name"
+        @click="toggleModal"
+      />
+      <BaseButton background="#E0909C" color="#ffe5dc" text="Delete" />
+    </div>
+    <ChangeNameModal
+      v-show="isVisibility"
+      @edit="editName"
+      @toggleBtn="toggleModal"
+      >What's your name?</ChangeNameModal
+    >
   </div>
 </template>
 
@@ -33,19 +38,15 @@ import ChangeNameModal from "./ChangeNameModal.vue";
   },
 })
 export default class Player extends Vue {
-  changeNameModal = false;
+  isVisibility = false;
 
   editName(newName: string) {
     this.$store.dispatch("changeName", newName);
-  }
-
-  addName(name: string) {
-    console.log(this.$store.state.nameList);
-    this.$store.dispatch("addName", name);
+    this.toggleModal();
   }
 
   toggleModal() {
-    this.changeNameModal = !this.changeNameModal;
+    this.isVisibility = !this.isVisibility;
   }
 }
 </script>
@@ -53,9 +54,17 @@ export default class Player extends Vue {
 <style scoped lang="scss">
 .player {
   margin-bottom: 2rem;
-}
-h2 {
-  color: #7c7484;
-  padding-bottom: 1rem;
+  width: 90%;
+  margin: auto;
+
+  .button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  h2 {
+    color: #7c7484;
+    padding-bottom: 1rem;
+  }
 }
 </style>

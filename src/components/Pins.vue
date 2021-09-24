@@ -5,11 +5,11 @@
       :key="item"
       :text="item"
       @click="btnClick(item)"
-      background="#7c7484"
-      color="#ffe5dc"
+      background="#F5CAC3"
+      color="#000"
     />
     <!-- @click hanterar emitten som emittas uppe från basebutton componenten -->
-    <BaseButton text="Reset" background="#8F8BA7" color="#ffe5dc" />
+    <BaseButton text="Reset" background="#E0909C" color="#ffe5dc" />
   </div>
 </template>
 
@@ -42,7 +42,9 @@ export default class Pins extends Vue {
 
 <style scoped lang="scss">
 .pin-wrapper {
-  height: 4rem;
-  padding-bottom: 2rem;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
 }
 </style>
