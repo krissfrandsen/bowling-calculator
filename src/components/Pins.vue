@@ -23,19 +23,10 @@ import BaseButton from "./BaseButton.vue";
   },
 })
 export default class Pins extends Vue {
-  @Prop() private pins!: number[];
-  @Prop() private gameList!: any[];
-  @Prop() isDisabled!: () => void;
+  @Prop() pins!: number[];
 
   btnClick(number: any) {
     this.$emit("number", number);
-  }
-
-  disableHandler(number: number) {
-    this.$emit("isDisabled", number);
-  }
-  resetScorecard() {
-    this.$emit("reset-scorecard");
   }
 }
 </script>

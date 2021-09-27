@@ -8,7 +8,6 @@ export const mutations: MutationTree<IGame> = {
   },
   ADD_FRAME(state, frame) {
     state.playerList[0].frames.push(frame);
-    console.log(frame);
   },
   UPDATE_FRAME(state, { frameIndex, pin }) {
     state.playerList[0].frames[frameIndex].rolls.push(pin);
@@ -19,7 +18,9 @@ export const mutations: MutationTree<IGame> = {
     state.playerList[0].frames[frameIndex].score = score;
   },
   SET_STRIKE(state, { frameIndex, isStrike }) {
-    console.log(frameIndex);
     state.playerList[0].frames[frameIndex].isStrike = isStrike;
+  },
+  SET_SPARE(state, { frameIndex, isSpare }) {
+    state.playerList[0].frames[frameIndex].isSpare = isSpare;
   },
 };

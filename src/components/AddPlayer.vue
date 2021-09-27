@@ -1,17 +1,11 @@
 <template>
   <div class="add-player-wrapper">
-    <BaseButton
-      background="#84A59D"
-      color="#ffe5dc"
-      text="Add Player"
-      @click="addPlayer"
-    />
+    <BaseButton background="#84A59D" color="#ffe5dc" text="Add Player" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { createLogger } from "vuex";
 import BaseButton from "./BaseButton.vue";
 
 @Component({

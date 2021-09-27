@@ -21,7 +21,27 @@
         transform="translate(120 150)"
       />
     </svg>
-
+    <svg class="blob4" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill="#F28482"
+        d="M65.6,-35.8C76.1,-19.6,69.7,8.4,55.9,28.3C42.1,48.1,21.1,59.7,-1.4,60.5C-23.8,61.3,-47.7,51.3,-53.8,35.9C-59.8,20.5,-48.2,-0.3,-36.3,-17.3C-24.4,-34.2,-12.2,-47.4,7.7,-51.8C27.5,-56.2,55.1,-51.9,65.6,-35.8Z"
+        transform="translate(60 120)"
+      />
+    </svg>
+    <svg class="blob5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill="#84A59D"
+        d="M67.9,-23.4C74.1,-2.9,55.7,24.2,30.8,42.3C6,60.3,-25.4,69.2,-42.4,57.2C-59.4,45.1,-62.1,12,-52.6,-12.9C-43.1,-37.8,-21.6,-54.6,4.6,-56.1C30.8,-57.6,61.7,-43.8,67.9,-23.4Z"
+        transform="translate(100 100)"
+      />
+    </svg>
+    <svg class="blob6" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill="#F5CAC3"
+        d="M41.8,-10.7C48.9,8.2,45.7,33.4,28.7,47.6C11.7,61.9,-19.1,65.2,-34.9,52.7C-50.6,40.1,-51.4,11.6,-43.1,-9.1C-34.8,-29.7,-17.4,-42.5,0,-42.5C17.3,-42.4,34.7,-29.7,41.8,-10.7Z"
+        transform="translate(100 40)"
+      />
+    </svg>
     <div class="hero">
       <h1>Bowling Score Calculator</h1>
       <AddPlayer />
@@ -74,7 +94,7 @@ body {
 }
 
 h1 {
-  font-family: "Chakra Petch", sans-serif;
+  font-family: "Righteous", cursive;
   font-size: 5rem;
   padding-bottom: 2rem;
   color: #f28482;
@@ -104,5 +124,20 @@ svg {
   height: 25rem;
   bottom: 0;
   right: 0;
+}
+.blob4 {
+  width: 20rem;
+  height: 20rem;
+  bottom: 0;
+}
+.blob5 {
+  width: 15rem;
+  height: 20rem;
+}
+.blob6 {
+  width: 20rem;
+  height: 20rem;
+  left: 0;
+  bottom: 0;
 }
 </style>

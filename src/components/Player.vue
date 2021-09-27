@@ -1,9 +1,9 @@
 <template>
   <div class="player">
-    <h2>{{ getName }}</h2>
-    <div v-for="(name, index) in this.$store.state.nameList" :key="index">
+    <h2>Player: {{ getName }}</h2>
+    <!-- <div v-for="(name, index) in this.$store.state.nameList" :key="index">
       <p>{{ name }}</p>
-    </div>
+    </div> -->
     <div class="button-wrapper">
       <BaseButton
         background="#F5CAC3"
@@ -17,8 +17,7 @@
       v-show="isVisibility"
       @edit="editName"
       @toggleBtn="toggleModal"
-      >What's your name?</ChangeNameModal
-    >
+    ></ChangeNameModal>
   </div>
 </template>
 
@@ -56,15 +55,14 @@ export default class Player extends Vue {
   margin-bottom: 2rem;
   width: 90%;
   margin: auto;
-
+  h2 {
+    color: #575a5e;
+    padding-bottom: 1rem;
+  }
   .button-wrapper {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-  }
-  h2 {
-    color: #7c7484;
-    padding-bottom: 1rem;
   }
 }
 </style>

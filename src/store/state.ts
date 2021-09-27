@@ -6,6 +6,7 @@ export const state: IGame = {
     {
       id: 0,
       name: "",
+      totalScore: 0,
       frames: [
         {
           rolls: [],

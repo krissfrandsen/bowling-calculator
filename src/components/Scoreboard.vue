@@ -2,12 +2,8 @@
   <div class="player-wrapper">
     <Player />
     {{ getFramesList }}
-    <ScorecardList :numberOfFrames="numberOfFrames" :frames="frames" />
-    <Pins
-      :pins="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-      @number="pinHandler"
-      :framesList="frames"
-    />
+    <ScorecardList :numberOfFrames="numberOfFrames" />
+    <Pins :pins="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" @number="pinHandler" />
   </div>
 </template>
 
@@ -31,59 +27,6 @@ import { mapGetters, mapState } from "vuex";
   },
 })
 export default class Scoreboard extends Vue {
-  currentRound = 0;
-  totalScore = 0;
-
-  frames: any[] = [
-    {
-      isStrike: false,
-      isSpare: false,
-      score: 0,
-      rolls: [],
-    },
-    {
-      isStrike: false,
-      isSpare: false,
-      score: 0,
-      rolls: [],
-    },
-    {
-      isStrike: false,
-      isSpare: false,
-      score: 0,
-      rolls: [],
-    },
-    {
-      score: 0,
-      rolls: [],
-    },
-    {
-      score: 0,
-      rolls: [],
-    },
-    {
-      score: 0,
-      rolls: [],
-    },
-    {
-      score: 0,
-      rolls: [],
-    },
-    {
-      score: 0,
-      rolls: [],
-    },
-    {
-      score: 0,
-      rolls: [],
-    },
-  ];
-
-  lastRound = this.frames[this.frames.length - 1];
-  // numberOfRolls = this.frames[this.currentRound].rolls.length;
-  // const previousRoll = this.frames[this.currentRound - 1].rolls[1];
-  // const prePreviousRoll = this.frames[this.currentRound - 1].rolls[0];
-
   pinHandler(number: number) {
     this.$store.dispatch("addPinToFrame", {
       frameIndex: this.$store.getters.getCurrentFrame,
@@ -114,47 +57,47 @@ export default class Scoreboard extends Vue {
     // }
   }
 
-  calculateScore() {
-    const firstScore = this.frames[this.currentRound].rolls[0];
-    const secondScore = this.frames[this.currentRound].rolls[1] ?? 0;
+  // calculateScore() {
+  //   const firstScore = this.frames[this.currentRound].rolls[0];
+  //   const secondScore = this.frames[this.currentRound].rolls[1] ?? 0;
 
-    this.frames[this.currentRound].score = firstScore + secondScore;
+  //   this.frames[this.currentRound].score = firstScore + secondScore;
 
-    if (this.currentRound !== 0) {
-      const previousScore = this.frames[this.currentRound - 1].score;
-      this.frames[this.currentRound].score += previousScore; // score from current round will be score + previous score
-    }
-  }
+  //   if (this.currentRound !== 0) {
+  //     const previousScore = this.frames[this.currentRound - 1].score;
+  //     this.frames[this.currentRound].score += previousScore; // score from current round will be score + previous score
+  //   }
+  // }
 
-  checkStrike(number: number) {
-    if (this.frames[this.currentRound - 1]) {
-      if (this.frames[this.currentRound - 1].isStrike) {
-        this.frames[this.currentRound - 1].score += number;
-        if (!this.frames[this.currentRound].rolls[1]) {
-          this.checkDoubleStrike(number);
-        }
-      }
-    }
-  }
+  // checkStrike(number: number) {
+  //   if (this.frames[this.currentRound - 1]) {
+  //     if (this.frames[this.currentRound - 1].isStrike) {
+  //       this.frames[this.currentRound - 1].score += number;
+  //       if (!this.frames[this.currentRound].rolls[1]) {
+  //         this.checkDoubleStrike(number);
+  //       }
+  //     }
+  //   }
+  // }
 
-  checkSpare(number: number) {
-    if (this.frames[this.currentRound - 1]) {
-      if (this.frames[this.currentRound - 1].isSpare) {
-        if (!this.frames[this.currentRound].rolls[1]) {
-          const spareNumber = this.frames[this.currentRound].rolls[0];
-          this.frames[this.currentRound - 1].score += spareNumber;
-        }
-      }
-    }
-  }
+  // checkSpare(number: number) {
+  //   if (this.frames[this.currentRound - 1]) {
+  //     if (this.frames[this.currentRound - 1].isSpare) {
+  //       if (!this.frames[this.currentRound].rolls[1]) {
+  //         const spareNumber = this.frames[this.currentRound].rolls[0];
+  //         this.frames[this.currentRound - 1].score += spareNumber;
+  //       }
+  //     }
+  //   }
+  // }
 
-  checkDoubleStrike(number: number) {
-    if (this.frames[this.currentRound - 2]) {
-      if (this.frames[this.currentRound - 2].isStrike) {
-        this.frames[this.currentRound - 2].score += number;
-      }
-    }
-  }
+  // checkDoubleStrike(number: number) {
+  //   if (this.frames[this.currentRound - 2]) {
+  //     if (this.frames[this.currentRound - 2].isStrike) {
+  //       this.frames[this.currentRound - 2].score += number;
+  //     }
+  //   }
+  // }
 }
 </script>
 

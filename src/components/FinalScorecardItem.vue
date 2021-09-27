@@ -24,7 +24,8 @@ export default class FinalScorecardItem extends Vue {
   flex-wrap: wrap;
   width: 9rem;
   height: 6rem;
-  border: 1px solid #8b8b8b;
+  border: 1px solid #575a5e;
+  border-radius: 4px;
   background: #f6bd60;
   margin: 3px;
   .container {
@@ -38,12 +39,12 @@ export default class FinalScorecardItem extends Vue {
   }
   .second {
     @extend .first;
-    border: 1px solid #8b8b8b;
+    border: 1px solid #575a5e;
     border-style: none none solid solid;
   }
   .third {
     @extend .first;
-    border: 1px solid #8b8b8b;
+    border: 1px solid #575a5e;
     border-style: none none solid solid; // I think we could rewrite this since we're repeating ourselfs
     padding-right: 1rem;
   }
