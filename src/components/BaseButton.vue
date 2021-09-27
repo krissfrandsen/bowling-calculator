@@ -4,7 +4,6 @@
     class="base-button"
     @click="handleClick"
     :style="{ background, color }"
-    :disabled="isDisabled"
   >
     {{ text }}
   </button>
@@ -15,10 +14,9 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class BaseButton extends Vue {
-  @Prop() private text!: string;
-  @Prop() private background!: string;
-  @Prop() private color!: string;
-  @Prop() isDisabled!: () => void;
+  @Prop() text!: string;
+  @Prop() background!: string;
+  @Prop() color!: string;
 
   handleClick() {
     this.$emit("click");
@@ -33,7 +31,8 @@ export default class BaseButton extends Vue {
   // color: #464f51;
   font-size: 1rem;
   padding: 1rem 1.4rem;
-  border: solid 1px #000;
+  border: 1px solid #575a5e;
+  border-radius: 3px;
   cursor: pointer;
 
   &:hover {

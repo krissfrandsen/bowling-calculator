@@ -1,7 +1,7 @@
 <template>
   <div class="overlay">
     <div class="modal">
-      <slot></slot>
+      <span>What's your name?</span>
       <input type="text" v-model="newName" placeholder="change name" />
       <div class="btn-wrapper">
         <BaseButton
@@ -11,7 +11,7 @@
           text="Confirm"
         ></BaseButton>
         <BaseButton
-          background="#84A59D"
+          background="#F28482"
           color="#ffe5dc"
           text="Cancel"
           @click="close"
@@ -31,6 +31,8 @@ import BaseButton from "./BaseButton.vue";
   },
 })
 export default class ChangeNameModal extends Vue {
+  @Prop() newName!: string;
+
   changeName(name: string) {
     this.$emit("edit", name);
   }
@@ -53,14 +55,17 @@ export default class ChangeNameModal extends Vue {
   align-items: center;
   justify-content: center;
   .modal {
-    width: 300px;
-    height: 200px;
-    padding: 20px;
+    width: 500px;
+    height: 250px;
+    padding: 40px;
     background-color: #f7ede2;
     box-shadow: 1px 2px 4px rgba(153, 155, 168, 0.12);
+    span {
+      font-size: 24px;
+    }
     input {
       padding: 15px;
-      width: 100%;
+      width: 75%;
       border: 0;
       box-sizing: border-box;
       margin: 20px 0;

@@ -25,7 +25,6 @@ import { IFrame } from "@/types/frame";
   },
 })
 export default class ScorecardList extends Vue {
-  @Prop() frames!: IFrame[];
   @Prop() numberOfFrames!: number;
 
   addFrames() {
@@ -36,10 +35,6 @@ export default class ScorecardList extends Vue {
 
   get numberOfBaseFrames(): number {
     return this.numberOfFrames - 1 > 0 ? this.numberOfFrames - 1 : 1;
-  }
-
-  updated() {
-    this.addFrames();
   }
 }
 </script>
