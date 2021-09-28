@@ -3,4 +3,5 @@ export interface IFrame {
   score: number;
   isStrike: boolean;
   isSpare: boolean;
+  index: number;
 }

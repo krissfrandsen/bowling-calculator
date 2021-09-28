@@ -1,16 +1,15 @@
-// import Store from '@/store/index'
-// import { IFrame } from '@/types/frame'
+import { maxPoint } from "@/variables/variables";
 
-// const createFrames = function() {
-// for(let i = 0; i<9; i++) {
+export function isStrike(firstRoll: number): boolean {
+  return firstRoll === maxPoint;
+}
 
-// }
-// }
-
-// const createPlayer = function(name: string, frames: IFrame) {
-//     const player = new Player();
-//     player.name = name;
-//     player.frames = frames
-
-//     return player;
-// }
+export function isSpare(firstRoll: number, secondRoll: number): boolean {
+  if (secondRoll === maxPoint) {
+    return true;
+  }
+  if (firstRoll + secondRoll === maxPoint) {
+    return true;
+  }
+  return false;
+}

@@ -2,21 +2,18 @@
   <div id="app">
     <div class="hero">
       <h1>Bowling Score Calculator</h1>
-      <AddPlayer />
-      <Scoreboard />
+      <Game />
     </div>
   </div>
 </template>
 
 <script>
 import { Component, Vue } from "vue-property-decorator";
-import AddPlayer from "@/components/AddPlayer.vue";
-import Scoreboard from "@/components/Scoreboard.vue";
+import Game from "@/components/Game.vue";
 
 @Component({
   components: {
-    AddPlayer,
-    Scoreboard,
+    Game,
   },
 })
 export default class App extends Vue {}

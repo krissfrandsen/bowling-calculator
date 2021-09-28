@@ -25,31 +25,35 @@ export default class ScorecardItem extends Vue {
   maxPins = 10;
 
   get firstRoll(): string {
-    return "";
-    //if (this.rolls[0] === this.maxPins) {
-    //  return "X";
-    //} else {
-    //  return this.rolls[0]?.toString() || "";
-    //}
+    if (this.rolls[0] === this.maxPins) {
+      return "X";
+    } else {
+      return this.rolls[0]?.toString() || "";
+    }
+  }
+
+  get roleOne(): number {
+    return this.rolls[0] || 0;
+  }
+  get roleTwo(): number {
+    return this.rolls[1] || 0;
   }
 
   get secondRoll(): string {
-    return "";
-    // if (this.rolls[1] === this.maxPins) {
-    //   return "/";
-    // } else if (this.maxPins - this.rolls[0] === this.rolls[1]) {
-    //   return "/";
-    // } else {
-    //   return this.rolls[1]?.toString() || "";
-    // }
+    if (this.roleOne === this.maxPins) {
+      return "-";
+    } else if (this.roleOne + this.roleTwo === this.maxPins) {
+      return "/";
+    } else {
+      return this.rolls[1]?.toString() || "";
+    }
   }
 
   get resultScore(): string {
-    return "";
-    //   if (this.result === this.maxPins) {
-    //     return "";
-    //   }
-    //   return this.result.toString();
+    if (this.result === this.maxPins) {
+      return "";
+    }
+    return this.result.toString();
   }
 }
 </script>

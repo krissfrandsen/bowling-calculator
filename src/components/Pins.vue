@@ -4,6 +4,7 @@
       v-for="item in pins"
       :key="item"
       :text="item"
+      :class="{ disabeld: pinIsDisabled(item) }"
       @click="btnClick(item)"
       background="#7c7484"
       color="#ffe5dc"
@@ -25,9 +26,20 @@ import BaseButton from "./BaseButton.vue";
 export default class Pins extends Vue {
   @Prop() private pins!: number[];
   @Prop() private gameList!: any[];
+  @Prop() private currentFrameRolls!: number[];
+
   @Prop() isDisabled!: () => void;
 
-  btnClick(number: any) {
+  pinIsDisabled(index: number): boolean {
+    if (10 - index < this.currentFrameRolls[0]) {
+      return true;
+    }
+  }
+
+  btnClick(number: number) {
+    if (this.pinIsDisabled(number)) {
+      return;
+    }
     this.$emit("number", number);
   }
 
@@ -44,5 +56,9 @@ export default class Pins extends Vue {
 .pin-wrapper {
   height: 4rem;
   padding-bottom: 2rem;
+
+  .disabeld {
+    filter: grayscale(22);
+  }
 }
 </style>
