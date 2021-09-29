@@ -1,40 +1,27 @@
 <template>
-  <div>
-    <div class="scorecard">
-      <div class="container">
-        <div class="first-score">
-          <span>{{ firstRoll }}</span>
-        </div>
-        <div class="second-score">
-          <span>{{ secondRoll }}</span>
-        </div>
+  <div class="scorecard">
+    <div class="container">
+      <div class="first-score">
+        <span>{{ firstRoll }}</span>
       </div>
-      <div class="result" v-if="resultScore > 0">
-        {{ resultScore }}
+      <div class="second-score">
+        <span>{{ secondRoll }}</span>
       </div>
     </div>
-    <!-- <div class="final-score-card">
-      <div class="container">
-        <section class="first"></section>
-        <section class="second"></section>
-        <section class="third"></section>
-      </div>
-      <section class="result"></section>
-    </div> -->
+    <div class="result" v-if="resultScore > 0">
+      {{ resultScore }}
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { IFrame } from "@/types/frame";
 import { maxPoint } from "@/variables/variables";
 import { Component, Vue, Prop } from "vue-property-decorator";
-import { Getter } from "vuex-class";
 
 @Component
 export default class ScorecardItem extends Vue {
   @Prop() rolls?: number[];
-  @Prop() result?: number;
-  @Getter("currentFrame") currentFrame: IFrame;
+  @Prop() result!: number;
 
   get rollOne(): number {
     return this.rolls[0] || 0;
@@ -72,14 +59,12 @@ export default class ScorecardItem extends Vue {
 </script>
 
 <style scoped lang="scss">
-//$scoreCardBg: #ffe5dc;
-
 .scorecard {
   display: flex;
   flex-wrap: wrap;
   width: 6rem;
   height: 6rem;
-  border: 1px solid #575a5e;
+  border: 1px solid #9a9a95;
   border-radius: 4px;
   background: #f6bd60;
   margin: 3px;
@@ -98,7 +83,7 @@ export default class ScorecardItem extends Vue {
   }
   .second-score {
     @extend .first-score;
-    border: 1px solid #575a5e;
+    border: 1px solid #9a9a95;
     border-style: none none solid solid;
   }
   .result {
@@ -114,39 +99,4 @@ export default class ScorecardItem extends Vue {
     align-items: center;
   }
 }
-// .final-score-card {
-//   display: flex;
-//   flex-wrap: wrap;
-//   width: 9rem;
-//   height: 6rem;
-//   border: 1px solid #575a5e;
-//   border-radius: 4px;
-//   background: #f6bd60;
-//   margin: 3px;
-//   .container {
-//     display: flex;
-//     flex-direction: row;
-//     width: 8.9rem;
-//   }
-//   .first {
-//     width: 3rem;
-//     height: 3rem;
-//   }
-//   .second {
-//     @extend .first;
-//     border: 1px solid #575a5e;
-//     border-style: none none solid solid;
-//   }
-//   .third {
-//     @extend .first;
-//     border: 1px solid #575a5e;
-//     border-style: none none solid solid; // I think we could rewrite this since we're repeating ourselfs
-//     padding-right: 1rem;
-//   }
-//   .result {
-//     align-self: flex-end;
-//     width: 9rem;
-//     height: 3rem;
-//   }
-// }
 </style>

@@ -24,7 +24,7 @@ export const actions: ActionTree<IGame, IGame> = {
     }
 
     if (frame.rolls.length === 2) {
-      frame.score = calculateScore(frame, state.playerList[0].frames, pin);
+      frame.score = calculateScore(frame, state.playerList[0].frames);
     }
 
     commit("UPDATE_FRAME", {

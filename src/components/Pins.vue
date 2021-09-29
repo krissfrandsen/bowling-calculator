@@ -9,7 +9,6 @@
       background="#F5CAC3"
       color="#000"
     />
-    <!-- @click hanterar emitten som emittas uppe från basebutton componenten -->
     <BaseButton
       text="Reset"
       background="#E0909C"

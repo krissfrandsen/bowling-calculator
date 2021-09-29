@@ -31,7 +31,7 @@ export default class BaseButton extends Vue {
   // color: #464f51;
   font-size: 1rem;
   padding: 1rem 1.4rem;
-  border: 1px solid #575a5e;
+  border: 1px solid #9a9a95;
   border-radius: 3px;
   cursor: pointer;
 
