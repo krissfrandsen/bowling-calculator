@@ -24,7 +24,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import BaseButton from "./BaseButton.vue";
-import { mapActions, mapGetters } from "vuex";
+import { Getter } from "vuex-class";
 import ChangeNameModal from "./ChangeNameModal.vue";
 
 @Component({
@@ -32,11 +32,9 @@ import ChangeNameModal from "./ChangeNameModal.vue";
     BaseButton,
     ChangeNameModal,
   },
-  computed: {
-    ...mapGetters(["getName"]),
-  },
 })
 export default class Player extends Vue {
+  @Getter("getName") getName: string;
   isVisibility = false;
 
   editName(newName: string) {
