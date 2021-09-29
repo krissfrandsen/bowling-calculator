@@ -1,118 +1,48 @@
 import { IFrame } from "@/types/frame";
-import bowlingHelper from "@/helpers/helper";
 import { ActionTree } from "vuex";
 import { IGame } from "@/types/game";
+import { calculateScore } from "@/helpers/helper";
 
 export const actions: ActionTree<IGame, IGame> = {
+  reset({ commit }) {
+    commit("RESET_STATE");
+  },
+
   changeName({ commit }, name) {
     return commit("CHANGE_NAME", name);
   },
-  addPinToFrame({ commit, dispatch, state }, { frameIndex, pin }) {
-    //Om första slaget. Skapa första framen
-    if (this.state.playerList[0].frames.length === 0) {
-      dispatch("addFrame");
-    }
-    //check if previous frame is strike
-    // if (this.getters.checkPrevFrameIsStrike) {
 
-    // }
+  addFrames({ commit }, frames) {
+    return commit("SET_FRAMES", [...this.state.playerList[0].frames, frames]);
+  },
 
-    const currentFrame: IFrame = state.playerList[0].frames[frameIndex];
-    //Kollar om det är första slaget
-    if (currentFrame?.rolls.length === 0) {
-      if (pin === 10) {
-        commit("UPDATE_FRAME", {
-          frameIndex,
-          pin,
-        });
-
-        commit("SET_STRIKE", {
-          frameIndex,
-          isStrike: true,
-        });
-        const score = bowlingHelper.calculateScore(currentFrame?.rolls);
-        dispatch("setScore", {
-          frameIndex,
-          score,
-        });
-
-        dispatch("addFrame");
-      } else {
-        //First pin if not strike
-        commit("UPDATE_FRAME", {
-          frameIndex,
-          pin,
-        });
-      }
-
-      // go outside first if
-    } else {
-      // Second pin if not strike
-      commit("UPDATE_FRAME", {
-        frameIndex,
-        pin,
-      });
-      if (currentFrame?.rolls[0] + currentFrame?.rolls[1] === 10) {
-        commit("SET_SPARE", {
-          frameIndex,
-          isSpare: true,
-        });
-      }
-      const score = bowlingHelper.calculateScore(currentFrame?.rolls);
-      dispatch("setScore", {
-        score,
-        frameIndex,
-      });
-      dispatch("addFrame");
+  addPinToFrame({ commit, dispatch, state }, { frame, pin }) {
+    frame.rolls.push(pin);
+    //lägg till för strike
+    if (pin === 10) {
+      frame.rolls.push(0);
     }
 
-    // Check previous frame if strike
-    if (
-      frameIndex > 0 &&
-      state.playerList[0].frames[frameIndex - 1].rolls[0] === 10
-    ) {
-      console.log("hello from checkstrike if");
-      // commit("UPDATE_FRAME", {
-      //   frameIndex,
-      //   pin: pin,
-      // });
-      const score = bowlingHelper.calculateScore(currentFrame?.rolls);
-      dispatch("setScore", {
-        frameIndex: frameIndex - 1,
-        score: 10 + score,
-      });
-      dispatch("addFrame");
+    if (frame.rolls.length === 2) {
+      frame.score = calculateScore(frame, state.playerList[0].frames, pin);
     }
 
-    //Check previous frame is spare
-    if (
-      frameIndex > 0 &&
-      state.playerList[0].frames[frameIndex - 1].rolls[0] +
-        state.playerList[0].frames[frameIndex - 1].rolls[1] ===
-        10
-    ) {
-      console.log("roll1", state.playerList[0].frames[frameIndex].rolls[0]);
-      commit("UPDATE_FRAME", {
-        frameIndex,
-        pin,
-      });
-      dispatch("setScore", {
-        frameIndex: frameIndex - 1,
-        score: 10 + state.playerList[0].frames[frameIndex].rolls[0],
-      });
-      dispatch("addFrame");
+    commit("UPDATE_FRAME", {
+      frame,
+    });
+
+    if (frame.rolls.length === 2) {
+      dispatch("addNextFrame", frame.index + 1);
     }
   },
-  addFrame({ commit }) {
+
+  addNextFrame({ commit }, index) {
     const frame: IFrame = {
       rolls: [],
       score: 0,
-      isStrike: false,
-      isSpare: false,
+      index,
     };
+
     commit("ADD_FRAME", frame);
-  },
-  setScore({ commit }, score) {
-    commit("SET_SCORE", score);
   },
 };
