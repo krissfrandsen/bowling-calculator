@@ -1,5 +1,5 @@
 import { IFrame } from "@/types/frame";
-import { maxPoint } from "@/variables/variables";
+import { addition, maxPoint } from "@/variables/variables";
 
 export function getAllRolls(frames): number[] {
   return frames.flatMap((frame: IFrame) => {
@@ -35,44 +35,35 @@ export function isSpare(firstRoll: number, secondRoll: number): boolean {
 
 //Hjälpfunktion för att plocak ut first roll / second roll
 
-export function calculateScore(
-  currentFrame: IFrame,
-  frames: IFrame[],
-  pin: number
-) {
+export function calculateScore(currentFrame: IFrame, frames: IFrame[]) {
   //Lägg till hjälpfunktion
   if (isFirstRound(currentFrame) && !isLastRound(currentFrame)) {
-    return currentFrame.rolls.reduce((a, b) => a + b, 0);
+    return currentFrame.rolls.reduce(addition);
   }
   //Lägg till hjälpfunktion
   const lastFrame: IFrame = frames.find(
     (stateFrame: IFrame) => stateFrame.index === currentFrame.index - 1
   );
-  console.log("currentFrame", currentFrame);
-  console.log("lastFrame", lastFrame);
+
+  const prePreviousFrame: IFrame = frames.find(
+    (stateFrame: IFrame) => stateFrame.index === currentFrame.index - 2
+  );
 
   if (isStrike(lastFrame.rolls[0])) {
-    return (lastFrame.score += currentFrame.rolls.reduce((a, b) => a + b, 0));
-
-    // gör uträkningen för strike
-    // man får 10 + de två senaste slagen + de två slagen man slagit
-    // return (
-    //   lastFrame.score +
-    //   getSumOfLastTwoRolls(getAllRolls(frames)) +
-    //   currentFrame.rolls.reduce((a, b) => a + b, 0)
-    // );
+    // if (isStrike(prePreviousFrame.rolls[0])) {
+    //   return (prePreviousFrame.score +=
+    //     lastFrame.score + currentFrame.rolls.reduce(addition));
+    // }
+    return (lastFrame.score += currentFrame.rolls.reduce(addition));
   }
 
   if (isSpare(lastFrame.rolls[0], lastFrame.rolls[1])) {
     lastFrame.score += currentFrame.rolls[0];
-    currentFrame.score += lastFrame.score + currentFrame.rolls[1];
+    return (currentFrame.score += lastFrame.score + currentFrame.rolls[1]);
   }
+
   if (isLastRound(currentFrame)) {
     return 1234;
   }
-  return (
-    frames.find(
-      (stateFrame: IFrame) => stateFrame.index === currentFrame.index - 1
-    ).score + currentFrame.rolls.reduce((a, b) => a + b, 0)
-  );
+  return lastFrame.score + currentFrame.rolls.reduce(addition);
 }

@@ -25,15 +25,16 @@
 </template>
 
 <script lang="ts">
+import { IFrame } from "@/types/frame";
+import { maxPoint } from "@/variables/variables";
 import { Component, Vue, Prop } from "vue-property-decorator";
-import { isLastRound } from "@/helpers/helper";
+import { Getter } from "vuex-class";
 
 @Component
 export default class ScorecardItem extends Vue {
   @Prop() rolls?: number[];
   @Prop() result?: number;
-
-  maxPins = 10;
+  @Getter("currentFrame") currentFrame: IFrame;
 
   get rollOne(): number {
     return this.rolls[0] || 0;
@@ -44,7 +45,7 @@ export default class ScorecardItem extends Vue {
   }
 
   get firstRoll(): string {
-    if (this.rollOne === this.maxPins) {
+    if (this.rollOne === maxPoint) {
       return "X";
     } else {
       return this.rolls[0]?.toString() || "";
@@ -52,9 +53,9 @@ export default class ScorecardItem extends Vue {
   }
 
   get secondRoll(): string {
-    if (this.rollOne === this.maxPins) {
+    if (this.rollOne === maxPoint) {
       return "-";
-    } else if (this.rollOne + this.rollTwo === this.maxPins) {
+    } else if (this.rollOne + this.rollTwo === maxPoint) {
       return "/";
     } else {
       return this.rolls[1]?.toString() || "";
@@ -62,7 +63,7 @@ export default class ScorecardItem extends Vue {
   }
 
   get resultScore(): string {
-    if (this.result === this.maxPins) {
+    if (this.result === maxPoint) {
       return "";
     }
     return this.result.toString();

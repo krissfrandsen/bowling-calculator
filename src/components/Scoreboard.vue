@@ -1,8 +1,11 @@
 <template>
   <div class="player-wrapper">
     <Player />
-    <div>current round index: {{ currentFrame.index }}</div>
-    <ScorecardList :numberOfFrames="numberOfFrames" :frames="frames" />
+    <ScorecardList
+      :numberOfFrames="numberOfFrames"
+      :frames="frames"
+      :currentFrameRolls="currentFrameRolls"
+    />
     <Pins
       :pins="pinList"
       @number="pinHandler"
@@ -34,8 +37,6 @@ export default class Scoreboard extends Vue {
   @Getter("currentFrame") currentFrame: IFrame;
   @State("numberOfFrames") numberOfFrames: number;
 
-  currentRound = 0;
-  totalScore = 0;
   pinList: number[] = [];
 
   get frames(): IFrame[] {

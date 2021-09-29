@@ -15,7 +15,6 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import ScorecardItem from "./ScorecardItem.vue";
 import FinalScorecardItem from "./FinalScorecardItem.vue";
 import { IFrame } from "@/types/frame";
-import { maxPoint } from "@/variables/variables";
 
 @Component({
   components: {
